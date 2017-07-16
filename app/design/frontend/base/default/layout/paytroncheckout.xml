@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="1.1.0.0">
+    <paytroncheckout_payment_redirect>
+        <update handle="page_empty" />
+        
+        <reference name="head">
+            <block type="core/text" name="paytron-iframe">
+                <action method="setText">
+                    <text><![CDATA[<script src="//paytron.com.ng/assets/js/iframe.paytron.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>   
+        
+        
+        <reference name="content">
+            <block type="core/template" template="paytroncheckout/checkout.phtml" />
+        </reference>
+    </paytroncheckout_payment_redirect>
+    
+ 
+</layout>

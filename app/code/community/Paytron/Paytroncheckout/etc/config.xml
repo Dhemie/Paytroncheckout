@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<config>
+    <modules>
+        <Paytron_Paytroncheckout>
+            <version>1.0.0.0</version>
+        </Paytron_Paytroncheckout>
+    </modules>
+    
+    <global>      
+        <models>
+            <paytroncheckout>
+                <class>Paytron_Paytroncheckout_Model</class>
+            </paytroncheckout>
+        </models>
+        
+        <helpers>
+            <paytroncheckout>
+                <class>Paytron_Paytroncheckout_Helper</class>
+            </paytroncheckout>
+        </helpers>        
+    </global>
+
+
+    
+   <default>
+    <payment>
+      <paytroncheckout>
+        <active>1</active>
+        <model>paytroncheckout/paymentMethod</model>
+        <description>Paytron Checkout Modal</description>
+        <title>Paytron Paytroncheckout</title>
+      </paytroncheckout>
+    </payment>
+  </default>
+
+  <frontend>
+    <routers>
+      <paytroncheckout>
+        <use>standard</use>
+        <args>
+          <module>Paytron_Paytroncheckout</module>
+          <frontName>paytroncheckout</frontName>
+        </args>
+      </paytroncheckout>
+    </routers>
+
+    <layout>
+      <updates>
+        <paytroncheckout  module="paytroncheckout" >
+          <file>paytroncheckout.xml</file>
+        </paytroncheckout>
+      </updates>
+    </layout>    
+  </frontend>
+    
+  
+    
+        
+
+</config>

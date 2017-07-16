@@ -1,0 +1,53 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+//$installer = $this;
+//
+//$installer->startSetup();
+//
+//$table= $installer->getConnection()
+//        ->newTable($installer->getTable('sales/quote_payment'))
+//        ->addColumn('custom_field_one',Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
+//                    'nullable' => false,
+//                ))
+//
+//                ->addColumn('custom_field_two',Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
+//                    'nullable' => false,
+//                ))
+//        
+//        ->newTable($installer->getTable('sales/order_payment'))
+//        
+//        ->addColumn('custom_field_one',Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
+//                    'nullable' => false,
+//                ))
+//
+//                ->addColumn('custom_field_two',Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
+//                    'nullable' => false,
+//                ))
+//        
+//        
+//        
+//        $installer->getConnection()->createTable($table);
+//        
+//        $installer->endSetup();
+
+
+<?php
+$installer = $this;
+$installer->startSetup();
+$installer->run("
+ALTER TABLE `{$installer->getTable('sales/quote_payment')}` 
+ADD `custom_field_one` VARCHAR( 255 ) NOT NULL,
+ADD `custom_field_two` VARCHAR( 255 ) NOT NULL;
+  
+ALTER TABLE `{$installer->getTable('sales/order_payment')}` 
+ADD `custom_field_one` VARCHAR( 255 ) NOT NULL,
+ADD `custom_field_two` VARCHAR( 255 ) NOT NULL;
+");
+$installer->endSetup();

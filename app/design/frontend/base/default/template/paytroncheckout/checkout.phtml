@@ -1,0 +1,48 @@
+<?php
+$helper = Mage::helper('paytroncheckout/Data');
+$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$order   = Mage::getSingleton('sales/order')->loadByIncrementId($orderId);
+$txnref  = "PAYT_" . $orderId . '_' . time(); //transaction reference id
+?>
+
+<form method="post" id="paytron-form" action="<?= $helper->getProcessUrl(); ?>">
+    <input  id="paytron-res" type="hidden" name="paytron-res" value="" />
+</form> 
+
+<script> 
+
+setTimeout(function() {
+    processPayment();
+},300); 
+    
+var jQ = jQuery.noConflict();
+
+var processPayment = function() {
+  var paytron = PaytronModal.showModal({
+    email: '<?= $order['customer_email']; ?>',
+    company: '<?= $helper->getConfigData('company'); ?>',
+    description: '<?= $helper->getConfigData('description'); ?>',
+    recipientAccountNumber: '<?= $helper->getConfigData('account_no'); ?>',
+    firstname: '<?= $order['customer_firstname']; ?>',
+    lastname: '<?= $order['customer_lastname']; ?>',
+    recipientBankCode: '<?= $helper->getConfigData('bank'); ?>',
+    amount: '<?= $order->getGrandTotal(); ?>' ,
+    companyLogo: '<?= Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'media/theme/'.$helper->getConfigData('modal_logo'); ?>',
+  }).setCallback(function(e) {
+      
+      sendPaymentResponse(e);
+    
+    
+  });
+};
+
+var sendPaymentResponse = function(data) {
+    var form = jQ("#paytron-form");
+    document.getElementById('paytron-res').value = data.code;
+    form.submit();
+};
+
+var redirectTo = function(url) {
+  location.href = url;
+};
+</script>
