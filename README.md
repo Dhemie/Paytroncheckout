@@ -9,6 +9,7 @@ These instructions wouldyou set up the paytron gateway model on your magento ins
 ### Prerequisites
 
 Magento 1.8, 1.9
+
 A registered account with paytron.ng
 
 ### Installing
@@ -29,8 +30,7 @@ on your frontend checkout page, you should see paytron checkout among the paymen
 That's all there is to it
 
 
-
-## Authors
+## Author
 
 * **Demi Oyewusi** - [Dhemie](https://github.com/Dhemie)
 
