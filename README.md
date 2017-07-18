@@ -32,7 +32,7 @@ That's all there is to it
 
 ## Authors
 
-* **Demi Oyewusi** - *Initial work* - [Dhemie](https://github.com/Dhemie)
+* **Demi Oyewusi** - [Dhemie](https://github.com/Dhemie)
 
 
 ## License
